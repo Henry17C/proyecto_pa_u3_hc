@@ -40,7 +40,7 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 	/*	
-	 //TELLER 25
+	 //TALLER 25
 		//Estudiante estu1= estudianteService.buscarPorApellido("Coyago");
 		Estudiante estu2= estudianteService.buscarPorNombre("Jose");
 		
@@ -49,6 +49,7 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 		
 	*/
 		
+	/*	
 		//DEBER 11
 		
 		
@@ -70,10 +71,25 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 	
 		iRentaService.rentar("172134", "NFS175");
 		
+		*/
+		/*
+		Estudiante e = new Estudiante();
+		e.setCiudad("Quito");
+		e.setCedula("175556");
+		e.setApellido("Perez");
+		e.setGenero("Masculino");
+		estudianteService.insertar(e);
+		*/
+		Estudiante estu1= estudianteService.buscarPorApellido("Perez");
+		Estudiante estu2 = estudianteService.buscarPorCedula("175556");
+		Estudiante estu3= estudianteService.buscarPorGenero("Masculino");
+		Estudiante estu4= estudianteService.buscarPorCiudad("Quito");
 		
 		
-		
-		
+		System.out.println(estu1);
+		System.out.println(estu2);
+		System.out.println(estu3);
+		System.out.println(estu4);
 		
 		
 		
