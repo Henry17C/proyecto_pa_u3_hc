@@ -39,57 +39,22 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-	/*	
-	 //TALLER 25
-		//Estudiante estu1= estudianteService.buscarPorApellido("Coyago");
-		Estudiante estu2= estudianteService.buscarPorNombre("Jose");
+
 		
-		//System.out.println(estu1);
-		System.out.println(estu2);
+
+		Estudiante estu1= estudianteService.buscarPorNombreQueryTyped("Jose");
+		Estudiante estu2= estudianteService.buscarPorNombreNamedQuery("Jose");
+		Estudiante estu3=estudianteService.buscarPorNombreNamedQueryTyped("Jose");
+		Estudiante estu4=estudianteService.buscarPorNombreNativeQuery("Jose");
+	//	Estudiante estu5=estudianteService.buscarPorNombreNativeQueryTypedNamed("Jose");
 		
-	*/
-		
-	/*	
-		//DEBER 11
-		
-		
-		Vehiculo vehiculo= new Vehiculo();
-		vehiculo.setAnio(1986);
-		vehiculo.setColor("Rojo");
-		vehiculo.setMarca("Toyota");
-		vehiculo.setPlaca("NFS175");
-		
-		
-		Cliente  cliente= new Cliente();
-		cliente.setAnioNacimiento(1979);
-		cliente.setNombre("Mario");
-		cliente.setApellido("Viteri");
-		cliente.setCedula("172134");
-		
-		iVehiculoService.insertar(vehiculo);
-		clienteService.insertar(cliente);
-	
-		iRentaService.rentar("172134", "NFS175");
-		
-		*/
-		/*
-		Estudiante e = new Estudiante();
-		e.setCiudad("Quito");
-		e.setCedula("175556");
-		e.setApellido("Perez");
-		e.setGenero("Masculino");
-		estudianteService.insertar(e);
-		*/
-		Estudiante estu1= estudianteService.buscarPorApellido("Perez");
-		Estudiante estu2 = estudianteService.buscarPorCedula("175556");
-		Estudiante estu3= estudianteService.buscarPorGenero("Masculino");
-		Estudiante estu4= estudianteService.buscarPorCiudad("Quito");
-		
-		
+			
 		System.out.println(estu1);
 		System.out.println(estu2);
 		System.out.println(estu3);
 		System.out.println(estu4);
+	//	System.out.println(estu5);
+	
 		
 		
 		

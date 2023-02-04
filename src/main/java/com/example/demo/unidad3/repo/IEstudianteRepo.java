@@ -9,5 +9,12 @@ public interface IEstudianteRepo {
 	public Estudiante buscarPorCiudadQuery(String ciudad);
 	public Estudiante buscarPorApellidoQuery(String apellido);
 	public void insertar (Estudiante e);
+	public Estudiante buscarPorNombreQueryTyped(String nombre);
+	public Estudiante buscarPorNombreNamedQuery(String nombre);
+	public Estudiante buscarPorNombreNamedQueryTyped(String nombre);
+	public Estudiante buscarPorNombreNativeQuery(String nombre);
+	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre);
+
+
 
 }

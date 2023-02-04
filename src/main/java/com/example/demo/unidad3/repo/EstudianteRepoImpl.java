@@ -7,6 +7,7 @@ import com.example.demo.unidad3.modelo.Estudiante;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Transactional
@@ -20,7 +21,6 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 	
 	@Override
 	public Estudiante buscarPorNombreQuery(String nombre) {
-		// TODO Auto-generated method stub
 		//select * from estudiante where estu_nombre="Pedro"
 		//select e from Estudiante e where e.nombre= 'Pedro'
 		//select e from Estudiante e where e.nombre= :datoNombre
@@ -31,7 +31,6 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 
 	@Override
 	public Estudiante buscarPorGeneroQuery(String genero) {
-		// TODO Auto-generated method stub
 		Query jpqlQuery= this.entityManager.createQuery("select e from Estudiante e where e.genero= :datoGenero");
 		jpqlQuery.setParameter("datoGenero", genero);
 		return (Estudiante) jpqlQuery.getSingleResult();
@@ -39,7 +38,6 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 
 	@Override
 	public Estudiante buscarPorCedulaQuery(String cedula) {
-		// TODO Auto-generated method stub
 		Query jpqlQuery= this.entityManager.createQuery("select e from Estudiante e where e.cedula= :datoCedula");
 		jpqlQuery.setParameter("datoCedula", cedula);
 		return (Estudiante) jpqlQuery.getSingleResult();
@@ -47,7 +45,6 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 
 	@Override
 	public Estudiante buscarPorCiudadQuery(String ciudad) {
-		// TODO Auto-generated method stub
 		Query jpqlQuery= this.entityManager.createQuery("select e from Estudiante e where e.ciudad= :datoCiudad");
 		jpqlQuery.setParameter("datoCiudad", ciudad);
 		return (Estudiante) jpqlQuery.getSingleResult();
@@ -55,7 +52,6 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 
 	@Override
 	public Estudiante buscarPorApellidoQuery(String apellido) {
-		// TODO Auto-generated method stub
 		Query jpqlQuery= this.entityManager.createQuery("select e from Estudiante e where e.apellido= :datoApellido");
 		jpqlQuery.setParameter("datoApellido", apellido);
 		return (Estudiante) jpqlQuery.getSingleResult();
@@ -66,5 +62,73 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 		
 		entityManager.persist(e);
 	}
+
+	
+	// QUERY TYPED
+	@Override
+	public Estudiante buscarPorNombreQueryTyped(String nombre) {
+		TypedQuery<Estudiante> myTypedQuery= this.entityManager.createQuery("select e from Estudiante e where e.nombre= :datoNombre", Estudiante.class);
+		myTypedQuery.setParameter("datoNombre", nombre);
+		
+		return myTypedQuery.getSingleResult();
+	}
+
+	
+	//NAMED QUERY
+	@Override
+	public Estudiante buscarPorNombreNamedQuery(String nombre) {
+		// TODO Auto-generated method stub
+		Query myQuery= this.entityManager.createNamedQuery("Estudiante.buscarPorNom");
+		 myQuery.setParameter("datoNombre", nombre) ;
+		 return (Estudiante) myQuery.getSingleResult();
+	}
+
+	
+	//NAMED QUERY TYPED
+	@Override
+	public Estudiante buscarPorNombreNamedQueryTyped(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myQuery= this.entityManager.createNamedQuery("Estudiante.buscarPorNom", Estudiante.class);
+		
+		 myQuery.setParameter("datoNombre", nombre) ;
+		return myQuery.getSingleResult();
+	}
+
+	
+	//NATIVE QUERY
+	@Override
+	public Estudiante buscarPorNombreNativeQuery(String nombre) {
+		// TODO Auto-generated method stub
+		
+		Query myQuery= this.entityManager.createNativeQuery("select * from estudiante where estu_nombre= :datoNombre", Estudiante.class);
+		myQuery.setParameter("datoNombre", nombre) ;
+		return (Estudiante) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreNativeQueryTypedNamed(String nombre) {
+		// TODO Auto-generated method stub
+		
+		TypedQuery<Estudiante> myQuery= this.entityManager.createNamedQuery("Estudiante.buscarPorNombreNative", Estudiante.class);
+		 myQuery.setParameter("datoNombre", nombre) ;
+		return myQuery.getSingleResult();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
