@@ -8,17 +8,19 @@ public class EstudianteDTO {
 	}
 
 	
-	public EstudianteDTO(String nombre, String apellido, String cedula) {
+	public EstudianteDTO(String nombre, String apellido, String cedula, String genero) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.cedula = cedula;
+		this.genero=genero;
 	}
 	
 	
 	private String nombre;
 	private String apellido;
 	private String cedula;
+	private String genero;
 	public String getNombre() {
 		return nombre;
 	}

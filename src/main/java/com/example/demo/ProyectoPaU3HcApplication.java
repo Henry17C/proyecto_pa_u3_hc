@@ -67,13 +67,12 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 		*/
 		
 		
-		
+		/*
 		estudianteService.buscarPorNombreQueryList("Jose");
 		System.out.println(estudianteService.buscarPorNombreQueryListFRL("Jose")); ;
-		
-	
-/*
-		
+		*/
+
+		/*
 		Estudiante estu1= new Estudiante();
 		estu1.setApellido("Lopez");
 		estu1.setCedula("1755");
@@ -85,10 +84,14 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 		estu1.setHobby("Arte");
 		estu1.setFechaNacimiento(LocalDateTime.now());
 		estudianteService.insertar(estu1);
-	*/	
+	
+		*/
+		
+		//estudianteService.buscarPorNombreQueryTypedDTO("Quito");
+		//estudianteService.buscarPorNombreCriteria("Jose");
 		
 		
-		
+		estudianteService.buscarPorNombreCriteriaAndOr("Jose", "Lopez", "M");
 		
 		
 	}
