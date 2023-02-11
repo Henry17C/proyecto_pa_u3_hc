@@ -31,6 +31,22 @@ public interface IEstudianteRepo {
 	public Estudiante buscarPorNombreCriteria(String nombre);
 	public List<Estudiante> buscarPorNombreCriteriaAndOr(String nombre, String apellido, String genero);
 
-
+	public int eliminarPorApellido(String apellido);
+	public int actualizarPorApellido(String apellido, String nombre);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

@@ -29,4 +29,9 @@ public interface IEstudianteService {
 
 	public List<Estudiante> buscarPorNombreCriteriaAndOr(String nombre, String apellido, String genero);
 
+	//update
+	public int eliminarPorApellido(String apellido);
+	public int actualizarPorApellido(String apellido, String nombre);
+	
+	
 }

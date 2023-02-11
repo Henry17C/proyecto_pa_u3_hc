@@ -217,6 +217,28 @@ public class EstudianteRepoImpl implements IEstudianteRepo{
 
 		return mySQL.getResultList();
 	}
+	
+	
+	//ACTUALIZAR E INSERTAR
+
+	@Override
+	public int eliminarPorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		//DELETE FROM ESTUDIANTE WHERE estu_apellido='Teran'
+		Query myQuery= this.entityManager.createQuery("DELETE FROM Estudiante e WHERE e.apellido = :datoEntrada");
+		myQuery.setParameter("datoEntrada", apellido);
+		return myQuery.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorApellido(String apellido, String nombre) {
+		// TODO Auto-generated method stub
+		//UPDATE Estudinate set estu_nombre='Edison' Where estu_apellido='Cayambe'
+		Query myQuery= this.entityManager.createQuery("UPDATE Estudiante e SET e.nombre= :datoNombre Where e.apellido= :datoApellido ");
+		myQuery.setParameter("datoNombre", nombre);
+		myQuery.setParameter("datoApellido", apellido);
+		return myQuery.executeUpdate();
+	}
 
 
 
