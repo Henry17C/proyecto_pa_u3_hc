@@ -51,7 +51,7 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 			}
 			}
 		
-		
+		///
 //		hotelService.BuscarHotelJoinFetch("VIP");
 //		hotelService.BuscarHotelLeftJoin("VIP");
 //		hotelService.BuscarHotelRightJoin("VIP");
