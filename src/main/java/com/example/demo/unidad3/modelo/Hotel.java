@@ -35,7 +35,7 @@ public class Hotel {
 	private String direccion;
 	
 	
-	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL,fetch = FetchType.LAZY )
 	private List<Habitacion> habitaciones;
 
 
@@ -81,7 +81,7 @@ public class Hotel {
 
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", habitaciones=" + habitaciones
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion 
 				+ "]";
 	}
 	
