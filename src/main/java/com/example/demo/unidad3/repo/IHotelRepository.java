@@ -12,4 +12,12 @@ public interface IHotelRepository {
 	public List<Hotel> BuscarHotelFullJoin(String tipoHabitacion);
 	public List<Hotel> BuscarHotelJoinFetch(String tipoHabitacion);
 
+	
+	public List<Hotel> BuscarHotelLeftJoin( );
+	public List<Hotel> BuscarHotelRightJoin( );
+	public List<Hotel> BuscarHotelFullJoin( );
+
+
+	
+	
 }

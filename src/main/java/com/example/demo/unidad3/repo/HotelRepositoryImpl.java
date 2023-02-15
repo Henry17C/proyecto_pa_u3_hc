@@ -43,13 +43,16 @@ public class HotelRepositoryImpl implements IHotelRepository{
 				}
 			}
 			h.getHabitaciones().size();
-			
+			// jakarta me permite acceder a la lista por medio de size
+			//esta interpretacion la hace de manera automaria al utilizar el size
+		//cualquiermetodo que accede a la lista me permite 
 		}
 		
 		return listHot;
 		
 	}
 
+	
 	
 	//hotle sin ningun hab
 	//habitacion sin padre(hotel)
@@ -91,6 +94,45 @@ public class HotelRepositoryImpl implements IHotelRepository{
 
 	@Override
 	public List<Hotel> BuscarHotelJoinFetch(String tipoHabitacion) {
+		TypedQuery<Hotel> myQuery= this.entityManager.createQuery("SELECT h FROM Hotel h  JOIN FETCH h.habitaciones ha WHERE ha.tipo= :datoTipo ",Hotel.class) ;
+		myQuery.setParameter("datoTipo", tipoHabitacion);
+		List<Hotel> listHoteles= myQuery.getResultList();
+		return listHoteles;
+	}
+
+
+
+	@Override
+	public List<Hotel> BuscarHotelLeftJoin() {
+		TypedQuery<Hotel> myQuery= this.entityManager.createQuery(
+				"SELECT h FROM Hotel h  LEFT JOIN  h.habitaciones",Hotel.class) ;
+		
+		List<Hotel> listHoteles= myQuery.getResultList();
+		for (Hotel hotel : listHoteles) {
+			
+			hotel.getHabitaciones().size();
+		}
+		
+		
+		return listHoteles;
+	}
+
+
+
+	@Override
+	public List<Hotel> BuscarHotelRightJoin() {
+		TypedQuery<Hotel> myQuery= this.entityManager.createQuery(
+				"SELECT h FROM Hotel h  RIGHT JOIN  h.habitaciones ha",Hotel.class) ;
+		
+		List<Hotel> listHoteles= myQuery.getResultList();
+	
+		return listHoteles;
+	}
+
+
+
+	@Override
+	public List<Hotel> BuscarHotelFullJoin() {
 		// TODO Auto-generated method stub
 		return null;
 	}

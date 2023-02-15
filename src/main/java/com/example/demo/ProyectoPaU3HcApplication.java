@@ -20,6 +20,7 @@ import com.example.demo.unidad3.modelo.Estudiante;
 import com.example.demo.unidad3.modelo.Habitacion;
 import com.example.demo.unidad3.modelo.Hotel;
 import com.example.demo.unidad3.service.IEstudianteService;
+import com.example.demo.unidad3.service.IHabitacioService;
 import com.example.demo.unidad3.service.IHotelService;
 
 
@@ -29,6 +30,10 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 
 	@Autowired 
 	IHotelService hotelService;
+	
+	@Autowired
+	IHabitacioService habitacioService;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoPaU3HcApplication.class, args);
@@ -42,6 +47,10 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 		//System.out.println(estudianteService.actualizarPorApellido("Lopez", "Max"));
 		//System.out.println(estudianteService.eliminarPorApellido("Lopez"));
 		
+		
+		//FETCH
+		//fetch: traida bajo demanda cuando los datos no son consistentes
+		System.out.println("**FETCH");
 		List<Hotel> listHo= hotelService.BuscarHotelInnerJoin("VIP");
 		
 			for (Hotel h : listHo) {
@@ -51,11 +60,76 @@ public class ProyectoPaU3HcApplication implements CommandLineRunner {
 			}
 			}
 		
-		///
-//		hotelService.BuscarHotelJoinFetch("VIP");
-//		hotelService.BuscarHotelLeftJoin("VIP");
-//		hotelService.BuscarHotelRightJoin("VIP");
-//		hotelService.BuscarHotelFullJoin("VIP");
+			
+			System.out.println("**JOIN FETCH");
+			
+			List<Hotel> listHtl= hotelService.BuscarHotelJoinFetch("VIP");
+			
+			for (Hotel h : listHtl) {
+				System.out.println("Hotel "+h.getNombre());
+			for (Habitacion hab : h.getHabitaciones()) {
+				System.out.println("Las Habitaciones de "+hab.getNumero());
+			}
+			}
+
+		
+		
+		//JOIN
+			System.out.println("**Sin parametros Hotel LEFT");//LEFT
+		List<Hotel> listH= hotelService.BuscarHotelLeftJoin();
+		
+		for (Hotel h : listH) {
+			System.out.println("Hotel "+h.getNombre());
+			for (Habitacion hab : h.getHabitaciones()) {
+				System.out.println("Las Habitaciones de "+hab.getNumero());
+			}
+	
+		}
+		
+		
+		
+		System.out.println("**Sin parametros Habitacion LEFT");//LEFT
+		List<Habitacion> listHab= habitacioService.BuscarHotelLeftJoin();
+		
+		for (Habitacion ha : listHab) {
+			System.out.println(ha!=null? "Habitaciones numero "+ha.getNumero():null);
+			
+		}
+		
+		
+		
+		
+		System.out.println("**Sin parametros Hotel RIGHT");//RIGHT
+		List<Hotel> listHote= hotelService.BuscarHotelRightJoin();
+		
+		for (Hotel h : listHote) {
+			System.out.println(h!=null?"Hotel "+h.getNombre():null);
+		}
+		
+		
+		
+		System.out.println("**Sin parametros Habitacion RIGHT");//LEFT
+		List<Habitacion> listHabi= habitacioService.BuscarHotelRightJoin();
+		
+		for (Habitacion ha : listHabi) {
+			System.out.println(ha!=null? "Habitaciones numero "+ha.getNumero():null);
+			System.out.println(ha.getHotel());
+		}
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 	}
